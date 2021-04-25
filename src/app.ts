@@ -9,6 +9,7 @@ import * as mongoose from 'mongoose';
 import * as morgan from 'morgan';
 import * as path from 'path';
 import {config} from './config';
+import {userRouter} from './routes';
 
 dotenv.config();
 
@@ -35,7 +36,7 @@ class App {
 
       this.app.use(express.static(path.resolve((global as any).appRoot, 'public')));
 
-      //TODO router
+      this.mountRoutes();
       this.setupDB();
 
       this.app.use(this.customErrorHandler);
@@ -69,6 +70,14 @@ class App {
       }
 
       return callback(null, true);
+    }
+
+    private mountRoutes(): void {
+      // this.app.use('/admin', adminRouter);
+      // this.app.use('/auth', authRouter);
+      // this.app.use('/products', productRouter);
+      this.app.use('/users', userRouter);
+
     }
 }
 
