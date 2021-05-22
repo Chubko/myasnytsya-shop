@@ -1,6 +1,7 @@
 import { Document, Model, model, Schema} from 'mongoose';
 
 import {IUser} from '../../models';
+import {UserRoleEnum, UserStatusEnum} from '../../constants';
 
 export type UserType = IUser & Document;
 
@@ -28,7 +29,7 @@ export const UserSchema: Schema = new Schema<any>({ //todo
   role: {
     type: String,
     required: true,
-    default: 'user'
+    default: UserRoleEnum.USER
   },
   age: {
     type: Number,
@@ -49,11 +50,11 @@ export const UserSchema: Schema = new Schema<any>({ //todo
   status: {
     type: String,
     required: true,
-    default: 'pending'
+    default: UserStatusEnum.PENDING
   },
   createdAt: {
     type: Date,
-    required: Date.now
+    default: Date.now
   }
 });
 

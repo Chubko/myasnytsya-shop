@@ -43,7 +43,7 @@ class App {
     }
 
     private setupDB(): void {
-      mongoose.connect(config.MONGODB_URL, { useNewUrlParser: true });
+      mongoose.connect(config.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
       const db = mongoose.connection;
       db.on('error', console.log.bind(console, 'MONGO ERROR'));
