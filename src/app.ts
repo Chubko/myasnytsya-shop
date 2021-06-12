@@ -14,8 +14,8 @@ import {userRouter} from './routes';
 dotenv.config();
 
 const serverRequestLimit = rateLimit({
-  windowMs: 10000,
-  max: 100 //TODO
+  windowMs: config.serverRateLimits.period,
+  max: config.serverRateLimits.maxRequests
 });
 
 class App {
