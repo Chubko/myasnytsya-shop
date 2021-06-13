@@ -1,0 +1,8 @@
+extends template
+
+block content
+    div
+        |Вітаємо в М'ясниці
+        |Для підтвердження
+        div
+            a(href=frontendURL + `/email/confirm/#{token}`) перейти
